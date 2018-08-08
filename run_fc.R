@@ -1,4 +1,4 @@
-## Script to predict intraday phone workload for PSP Mollie BV.
+## Script to predict intraday phone workload.
 ## Author:  Kai Gerrits 
 ## Date:    2018-08-05
 ## =======================================================================================================================================================================
@@ -10,8 +10,11 @@ start.time <- Sys.time()
 if("stringi" %in% installed.packages() == FALSE ){install.packages("stringi")}
 if("ISOweek" %in% installed.packages() == FALSE ){install.packages("ISOweek")}
 
+## Find name of csv file.
+source("~/Documents/loc")
+
 ## Read data from csv.
-dat <- read.csv(file = "~/Downloads/Inbound Call Log 180719_164840.csv", stringsAsFactors = FALSE)
+dat       <- read.csv(file = location, stringsAsFactors = FALSE)
 
 ## Add weekday column to find first and last full week in dataset. Excess data pre and post is removed.
 dat$DATE    <- as.Date.character(dat$DATE, format = '%d/%m/%Y')
